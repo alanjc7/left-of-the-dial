@@ -44,8 +44,8 @@ const FestivalScheduler = () => {
   }, [schedule]);
 
   return (
-    <div className="w-full max-w-6xl mx-auto p-6 bg-gray-50 text-gray-900">
-      <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
+    <div className="w-full max-w-6xl mx-auto p-0 md:p-4 bg-gray-50 text-gray-900">
+      <div className="bg-white rounded-lg shadow-lg p-4 md:mb-4">
         <h1 className="text-3xl font-bold mb-2 text-gray-900">Left of the Dial</h1>
         <p className="text-gray-600 mb-4">Optimized schedule with {schedule.length} bands · {missedBands.length} missed</p>
         
@@ -189,7 +189,7 @@ const FestivalScheduler = () => {
         )}
       </div>
 
-      <div className="bg-white rounded-lg shadow p-4">
+      <div className="bg-white rounded-lg shadow p-4 hidden md:block">
         <h3 className="font-bold mb-2 text-gray-900">Summary</h3>
         <div className="grid grid-cols-2 gap-4 text-sm">
           <div>
