@@ -1,8 +1,8 @@
 import { priorities as prioritiesObj } from "../constants"
 import { timeToMinutes } from "./scheduler"
 
-const thursday = await fetch('https://tmsqr.app/api/timetable/67b3567f1f462/stage/11782')
-const thu = await thursday.json()
+// const thursday = await fetch('https://tmsqr.app/api/timetable/67b3567f1f462/stage/11782')
+// const thu = await thursday.json()
 const friday = await fetch('https://tmsqr.app/api/timetable/67b3567f1f462/stage/11783')
 const fri = await friday.json()
 const saturday = await fetch('https://tmsqr.app/api/timetable/67b3567f1f462/stage/11784')
@@ -66,6 +66,7 @@ const format = (obj) => {
       const day = start.includes("2025-10-23") ? "Thu" : start.includes("2025-10-24") ? "Fri" : "Sat"
       // Drop performances starting before 16:40
       if (timeToMinutes(st) < timeToMinutes("16:40")) return;
+      if (timeToMinutes(st) > timeToMinutes("23:29")) return;
       
       formatted.push({ 
         day, 
@@ -81,12 +82,13 @@ const format = (obj) => {
 };
 
 export function getTimetable() {
-  const {artists: _artistsThu , stag: sanitizedThu} = sanitize(thu)
+  // const {artists: _artistsThu , stag: sanitizedThu} = sanitize(thu)
   const {artists: _artistsFri, stag: sanitizedFri} = sanitize(fri)
   const {artists: _artistsSat, stag: sanitizedSat} = sanitize(sat)
   // console.log(artistsThu)
   // console.log(sanitizedThu)
-  const full = {stages: [...sanitizedThu.stages, ...sanitizedFri.stages, ...sanitizedSat.stages]}
+  // const full = {stages: [...sanitizedThu.stages, ...sanitizedFri.stages, ...sanitizedSat.stages]}
+  const full = {stages: [...sanitizedFri.stages, ...sanitizedSat.stages]}
   const formattedFull = format(full)
   // console.log(full.stages[0])
   // console.log({formattedFull})
